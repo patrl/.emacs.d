@@ -1,0 +1,14 @@
+# Emacs lisp extracted from patrl.org
+/patrl.el
+
+# Smex items
+/.smex-items
+
+# Backup files
+*~
+
+# Auto save folder
+/auto-save-list
+
+# Cask folder
+/.cask/
