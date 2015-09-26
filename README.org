@@ -6,10 +6,50 @@ A literate emacs configuration using ~org-mode~ with ~babel~.
 
 Package management courtesy of the wonderful combination of [[https://github.com/cask/cask][cask]] and [[https://github.com/rdallasgray/pallet][pallet]].
 
-* Installation
+* Linux
 
-** Linux
+** Prerequisites
 
-If you're on linux and want my configuration, just clone the contents of this repository into ~\~/.emacs.d~, and run ~install.sh~ (do this at your own risk).
+- git (for installation).
+- [[http://pandoc.org/][pandoc]] (e.g., via ~cabal install pandoc~), and [[https://www.tug.org/texlive/][texlive]] (or some other LaTeX distribution).
 
-** TODO Add windows installation instructions
+** Installation
+
+If you're on linux and want my configuration, just clone the contents of this repository into ~\~/.emacs.d~, and run ~install.sh~ (do this at your own risk!).
+
+** Post-installation
+
+Under the heading *Configuration (system specific)*, set the value of ~deft-directory~ to the path of the directory where you'd like to store your ~deft~ notes. If pandoc is already on your path, you can delete the subsection *Pandoc*. Otherwise set the value of ~pandoc-binary~ to the location of your pandoc executable. If you installed pandoc via ~cabal install pandoc~, this should be ~\~/.cabal/bin/pandoc~.
+
+* Windows
+
+** Installation
+
+I'll get around to adding a powershell script to automate this eventually. In the meantime, make sure that ~git~, ~python~, and ~emacs~ are all on your PATH, and run the following:
+
+#+begin_src sh
+git clone https://github.com/cask/cask.git ~/.cask
+#+end_src
+
+Now add ~\~/.cask/bin~ to your PATH.
+
+Now clone the contents of this repository into ~/appdata/roaming/.emacs.d~. Go into ~patrl.org~, go to the section *Configuration (general)*, and then the subsection *Package management*, and change the following:
+
+#+begin_src emacs-lisp
+(require 'cask "~/.cask/cask.el")
+#+end_src
+
+to the following:
+
+#+begin_src emacs-lisp
+(require 'cask "C:/Users/YOURUSERNAME/.cask/cask.el")
+#+end_src
+
+Now run the following:
+
+#+begin_src sh
+cd C:/Users/YOURUSERNAME/Appdata/roaming/.emacs.d
+cask install
+#+end_src
+
+Now open emacs and fingers-crossed everything should be working fine.
