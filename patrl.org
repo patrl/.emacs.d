@@ -21,7 +21,7 @@ This ensures that emacs knows my full name and email address.
 ;; Package Manager
 ;; See ~Cask~ file for its configuration
 ;; https://github.com/cask/cask
-(require 'cask "~/.cask/cask.el")
+(require 'cask "C:/Users/patri/.cask/cask.el")
 (cask-initialize)
 
 ;; Keeps ~Cask~ file in sync with the packages
