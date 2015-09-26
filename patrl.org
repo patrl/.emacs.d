@@ -31,7 +31,7 @@ This ensures that emacs knows my full name and email address.
 (pallet-mode t)
 #+end_src
 
-*** Splash screen
+** Splash screen
 
 This gets rid of the initial splash screen, as well as the message in the scratch buffer. Since I spend most of my time using emacs to take notes in ~deft-mode~, I set this as the initial major mode.
 
@@ -41,7 +41,7 @@ This gets rid of the initial splash screen, as well as the message in the scratc
       initial-major-mode 'deft)
 #+end_src
 
-*** Backup files
+** Backup files
 
 Stops emacs from creating backup files which have a habit of cluttering up directories.
 
@@ -49,7 +49,7 @@ Stops emacs from creating backup files which have a habit of cluttering up direc
 (setq make-backup-files nil)
 #+end_src
 
-*** Yes-and-no
+** Yes-and-no
 
 Allow single character responses to yes/no questions.
 
@@ -57,7 +57,7 @@ Allow single character responses to yes/no questions.
 (defalias 'yes-or-no-p 'y-or-n-p)
 #+end_src
 
-*** Keybindings
+** Keybindings
 
 Miscellaneous keybindings.
 
@@ -69,7 +69,7 @@ Miscellaneous keybindings.
 (global-set-key [C-mouse-5] 'text-scale-decrease)
 #+end_src
 
-*** Tool bar
+** Tool bar
 
 Gets rid of the tool bar.
 
@@ -77,12 +77,22 @@ Gets rid of the tool bar.
 (tool-bar-mode -1)
 #+end_src
 
-*** Display settings
+** Display settings
+
+*** Theme
 
 Use the ~solarized-light~ theme.
 
 #+begin_src emacs-lisp
 (load-theme 'solarized-light t)
+#+end_src
+
+*** Font
+
+Use the fantasque font
+
+#+begin_src emacs-lisp
+(set-frame-font "Fantasque Sans Mono"-14)
 #+end_src
 
 **** TODO terminal theming
