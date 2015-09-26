@@ -193,7 +193,7 @@ Enables history and searching on top of ~M-x~ using ~smex~.
 Determines where ~deft~ notes get saved.
 
 #+begin_src emacs-lisp
-(setq deft-directory "~/Dropbox/deft")
+(setq deft-directory "C:/Users/patri/Dropbox/deft")
 #+end_src
 
 *** Pandoc
