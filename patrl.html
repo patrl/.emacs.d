@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Patrick Elliott's Emacs 24 Configuration</title>
-<!-- 2015-09-26 Sat 16:26 -->
+<!-- 2015-09-26 Sat 18:24 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Patrick Elliott" />
@@ -146,43 +146,45 @@ for the JavaScript code in this tag.
 <li><a href="#sec-2">2. Configuration (general)</a>
 <ul>
 <li><a href="#sec-2-1">2.1. User details</a></li>
-<li><a href="#sec-2-2">2.2. Package management</a>
+<li><a href="#sec-2-2">2.2. Package management</a></li>
+<li><a href="#sec-2-3">2.3. Splash screen</a></li>
+<li><a href="#sec-2-4">2.4. Backup files</a></li>
+<li><a href="#sec-2-5">2.5. Yes-and-no</a></li>
+<li><a href="#sec-2-6">2.6. Keybindings</a></li>
+<li><a href="#sec-2-7">2.7. Tool bar</a></li>
+<li><a href="#sec-2-8">2.8. Display settings</a>
 <ul>
-<li><a href="#sec-2-2-1">2.2.1. Splash screen</a></li>
-<li><a href="#sec-2-2-2">2.2.2. Backup files</a></li>
-<li><a href="#sec-2-2-3">2.2.3. Yes-and-no</a></li>
-<li><a href="#sec-2-2-4">2.2.4. Keybindings</a></li>
-<li><a href="#sec-2-2-5">2.2.5. Tool bar</a></li>
-<li><a href="#sec-2-2-6">2.2.6. Display settings</a></li>
+<li><a href="#sec-2-8-1">2.8.1. Theme</a></li>
+<li><a href="#sec-2-8-2">2.8.2. Font</a></li>
 </ul>
 </li>
-<li><a href="#sec-2-3">2.3. Org</a>
+<li><a href="#sec-2-9">2.9. Org</a>
 <ul>
-<li><a href="#sec-2-3-1">2.3.1. Settings</a></li>
+<li><a href="#sec-2-9-1">2.9.1. Settings</a></li>
 </ul>
 </li>
-<li><a href="#sec-2-4">2.4. Writing</a>
+<li><a href="#sec-2-10">2.10. Writing</a>
 <ul>
-<li><a href="#sec-2-4-1">2.4.1. Flyspell</a></li>
-<li><a href="#sec-2-4-2">2.4.2. Olivetti</a></li>
-<li><a href="#sec-2-4-3">2.4.3. <span class="todo TODO">TODO</span> <code>writeroom-mode</code></a></li>
+<li><a href="#sec-2-10-1">2.10.1. Flyspell</a></li>
+<li><a href="#sec-2-10-2">2.10.2. Olivetti</a></li>
+<li><a href="#sec-2-10-3">2.10.3. <span class="todo TODO">TODO</span> <code>writeroom-mode</code></a></li>
 </ul>
 </li>
-<li><a href="#sec-2-5">2.5. Deft</a></li>
-<li><a href="#sec-2-6">2.6. LaTeX</a>
+<li><a href="#sec-2-11">2.11. Deft</a></li>
+<li><a href="#sec-2-12">2.12. LaTeX</a>
 <ul>
-<li><a href="#sec-2-6-1">2.6.1. Referencing</a></li>
+<li><a href="#sec-2-12-1">2.12.1. Referencing</a></li>
 </ul>
 </li>
-<li><a href="#sec-2-7">2.7. Markdown</a>
+<li><a href="#sec-2-13">2.13. Markdown</a>
 <ul>
-<li><a href="#sec-2-7-1">2.7.1. Settings</a></li>
-<li><a href="#sec-2-7-2">2.7.2. Pandoc</a></li>
+<li><a href="#sec-2-13-1">2.13.1. Settings</a></li>
+<li><a href="#sec-2-13-2">2.13.2. Pandoc</a></li>
 </ul>
 </li>
-<li><a href="#sec-2-8">2.8. Utilities</a>
+<li><a href="#sec-2-14">2.14. Utilities</a>
 <ul>
-<li><a href="#sec-2-8-1">2.8.1. Smex</a></li>
+<li><a href="#sec-2-14-1">2.14.1. Smex</a></li>
 </ul>
 </li>
 </ul>
@@ -237,7 +239,7 @@ This ensures that emacs knows my full name and email address.
 <pre class="src src-emacs-lisp">;; Package Manager
 ;; See ~Cask~ file for its configuration
 ;; https://github.com/cask/cask
-(require 'cask "C:/Users/patri/.cask/cask.el")
+(require 'cask "~/.cask/cask.el")
 (cask-initialize)
 
 ;; Keeps ~Cask~ file in sync with the packages
@@ -248,10 +250,11 @@ This ensures that emacs knows my full name and email address.
 </pre>
 </div>
 </div>
+</div>
 
-<div id="outline-container-sec-2-2-1" class="outline-4">
-<h4 id="sec-2-2-1"><span class="section-number-4">2.2.1</span> Splash screen</h4>
-<div class="outline-text-4" id="text-2-2-1">
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Splash screen</h3>
+<div class="outline-text-3" id="text-2-3">
 <p>
 This gets rid of the initial splash screen, as well as the message in the scratch buffer. Since I spend most of my time using emacs to take notes in <code>deft-mode</code>, I set this as the initial major mode.
 </p>
@@ -266,9 +269,9 @@ This gets rid of the initial splash screen, as well as the message in the scratc
 </div>
 </div>
 
-<div id="outline-container-sec-2-2-2" class="outline-4">
-<h4 id="sec-2-2-2"><span class="section-number-4">2.2.2</span> Backup files</h4>
-<div class="outline-text-4" id="text-2-2-2">
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> Backup files</h3>
+<div class="outline-text-3" id="text-2-4">
 <p>
 Stops emacs from creating backup files which have a habit of cluttering up directories.
 </p>
@@ -281,9 +284,9 @@ Stops emacs from creating backup files which have a habit of cluttering up direc
 </div>
 </div>
 
-<div id="outline-container-sec-2-2-3" class="outline-4">
-<h4 id="sec-2-2-3"><span class="section-number-4">2.2.3</span> Yes-and-no</h4>
-<div class="outline-text-4" id="text-2-2-3">
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5"><span class="section-number-3">2.5</span> Yes-and-no</h3>
+<div class="outline-text-3" id="text-2-5">
 <p>
 Allow single character responses to yes/no questions.
 </p>
@@ -296,9 +299,9 @@ Allow single character responses to yes/no questions.
 </div>
 </div>
 
-<div id="outline-container-sec-2-2-4" class="outline-4">
-<h4 id="sec-2-2-4"><span class="section-number-4">2.2.4</span> Keybindings</h4>
-<div class="outline-text-4" id="text-2-2-4">
+<div id="outline-container-sec-2-6" class="outline-3">
+<h3 id="sec-2-6"><span class="section-number-3">2.6</span> Keybindings</h3>
+<div class="outline-text-3" id="text-2-6">
 <p>
 Miscellaneous keybindings.
 </p>
@@ -315,9 +318,9 @@ Miscellaneous keybindings.
 </div>
 </div>
 
-<div id="outline-container-sec-2-2-5" class="outline-4">
-<h4 id="sec-2-2-5"><span class="section-number-4">2.2.5</span> Tool bar</h4>
-<div class="outline-text-4" id="text-2-2-5">
+<div id="outline-container-sec-2-7" class="outline-3">
+<h3 id="sec-2-7"><span class="section-number-3">2.7</span> Tool bar</h3>
+<div class="outline-text-3" id="text-2-7">
 <p>
 Gets rid of the tool bar.
 </p>
@@ -330,9 +333,12 @@ Gets rid of the tool bar.
 </div>
 </div>
 
-<div id="outline-container-sec-2-2-6" class="outline-4">
-<h4 id="sec-2-2-6"><span class="section-number-4">2.2.6</span> Display settings</h4>
-<div class="outline-text-4" id="text-2-2-6">
+<div id="outline-container-sec-2-8" class="outline-3">
+<h3 id="sec-2-8"><span class="section-number-3">2.8</span> Display settings</h3>
+<div class="outline-text-3" id="text-2-8">
+</div><div id="outline-container-sec-2-8-1" class="outline-4">
+<h4 id="sec-2-8-1"><span class="section-number-4">2.8.1</span> Theme</h4>
+<div class="outline-text-4" id="text-2-8-1">
 <p>
 Use the <code>solarized-light</code> theme.
 </p>
@@ -343,18 +349,33 @@ Use the <code>solarized-light</code> theme.
 </pre>
 </div>
 </div>
+</div>
 
-<ol class="org-ol"><li><a id="sec-2-2-6-1" name="sec-2-2-6-1"></a><span class="todo TODO">TODO</span> terminal theming<br  /></li></ol>
+<div id="outline-container-sec-2-8-2" class="outline-4">
+<h4 id="sec-2-8-2"><span class="section-number-4">2.8.2</span> Font</h4>
+<div class="outline-text-4" id="text-2-8-2">
+<p>
+Use the fantasque font
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(set-frame-font "Fantasque Sans Mono"-14)
+</pre>
+</div>
+</div>
+
+<ol class="org-ol"><li><a id="sec-2-8-2-1" name="sec-2-8-2-1"></a><span class="todo TODO">TODO</span> terminal theming<br  /></li></ol>
 </div>
 </div>
 
 
-<div id="outline-container-sec-2-3" class="outline-3">
-<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Org</h3>
-<div class="outline-text-3" id="text-2-3">
-</div><div id="outline-container-sec-2-3-1" class="outline-4">
-<h4 id="sec-2-3-1"><span class="section-number-4">2.3.1</span> Settings</h4>
-<div class="outline-text-4" id="text-2-3-1">
+<div id="outline-container-sec-2-9" class="outline-3">
+<h3 id="sec-2-9"><span class="section-number-3">2.9</span> Org</h3>
+<div class="outline-text-3" id="text-2-9">
+</div><div id="outline-container-sec-2-9-1" class="outline-4">
+<h4 id="sec-2-9-1"><span class="section-number-4">2.9.1</span> Settings</h4>
+<div class="outline-text-4" id="text-2-9-1">
 <p>
 Put a timestamp on completed tasks. Highlight the <code>INPROGRESS</code> keyword.
 </p>
@@ -370,17 +391,17 @@ Put a timestamp on completed tasks. Highlight the <code>INPROGRESS</code> keywor
 </div>
 </div>
 
-<div id="outline-container-sec-2-4" class="outline-3">
-<h3 id="sec-2-4"><span class="section-number-3">2.4</span> Writing</h3>
-<div class="outline-text-3" id="text-2-4">
+<div id="outline-container-sec-2-10" class="outline-3">
+<h3 id="sec-2-10"><span class="section-number-3">2.10</span> Writing</h3>
+<div class="outline-text-3" id="text-2-10">
 <p>
 I've added some utilities for writing prose in emacs.
 </p>
 </div>
 
-<div id="outline-container-sec-2-4-1" class="outline-4">
-<h4 id="sec-2-4-1"><span class="section-number-4">2.4.1</span> Flyspell</h4>
-<div class="outline-text-4" id="text-2-4-1">
+<div id="outline-container-sec-2-10-1" class="outline-4">
+<h4 id="sec-2-10-1"><span class="section-number-4">2.10.1</span> Flyspell</h4>
+<div class="outline-text-4" id="text-2-10-1">
 <p>
 Enable flyspell spellchecking in text-mode (and derived modes).
 </p>
@@ -393,9 +414,9 @@ Enable flyspell spellchecking in text-mode (and derived modes).
 </div>
 </div>
 
-<div id="outline-container-sec-2-4-2" class="outline-4">
-<h4 id="sec-2-4-2"><span class="section-number-4">2.4.2</span> Olivetti</h4>
-<div class="outline-text-4" id="text-2-4-2">
+<div id="outline-container-sec-2-10-2" class="outline-4">
+<h4 id="sec-2-10-2"><span class="section-number-4">2.10.2</span> Olivetti</h4>
+<div class="outline-text-4" id="text-2-10-2">
 <p>
 Enable olivetti in text-mode (and derived modes) to provide margins.
 </p>
@@ -408,9 +429,9 @@ Enable olivetti in text-mode (and derived modes) to provide margins.
 </div>
 </div>
 
-<div id="outline-container-sec-2-4-3" class="outline-4">
-<h4 id="sec-2-4-3"><span class="section-number-4">2.4.3</span> <span class="todo TODO">TODO</span> <code>writeroom-mode</code></h4>
-<div class="outline-text-4" id="text-2-4-3">
+<div id="outline-container-sec-2-10-3" class="outline-4">
+<h4 id="sec-2-10-3"><span class="section-number-4">2.10.3</span> <span class="todo TODO">TODO</span> <code>writeroom-mode</code></h4>
+<div class="outline-text-4" id="text-2-10-3">
 <p>
 Check out writeroom mode as an alternative to <code>olivetti-mode</code>.
 </p>
@@ -418,9 +439,9 @@ Check out writeroom mode as an alternative to <code>olivetti-mode</code>.
 </div>
 </div>
 
-<div id="outline-container-sec-2-5" class="outline-3">
-<h3 id="sec-2-5"><span class="section-number-3">2.5</span> Deft</h3>
-<div class="outline-text-3" id="text-2-5">
+<div id="outline-container-sec-2-11" class="outline-3">
+<h3 id="sec-2-11"><span class="section-number-3">2.11</span> Deft</h3>
+<div class="outline-text-3" id="text-2-11">
 <p>
 <a href="http://jblevins.org/projects/deft/">Deft</a> is one of the modes I use most frequently. It allows me to quickly create, manage, and sort through notes. Complemented with <code>org-mode</code>, it's the perfect tool for daily note-taking.
 </p>
@@ -440,12 +461,12 @@ This sets org-mode as the default mode for deft.
 </div>
 </div>
 
-<div id="outline-container-sec-2-6" class="outline-3">
-<h3 id="sec-2-6"><span class="section-number-3">2.6</span> LaTeX</h3>
-<div class="outline-text-3" id="text-2-6">
-</div><div id="outline-container-sec-2-6-1" class="outline-4">
-<h4 id="sec-2-6-1"><span class="section-number-4">2.6.1</span> Referencing</h4>
-<div class="outline-text-4" id="text-2-6-1">
+<div id="outline-container-sec-2-12" class="outline-3">
+<h3 id="sec-2-12"><span class="section-number-3">2.12</span> LaTeX</h3>
+<div class="outline-text-3" id="text-2-12">
+</div><div id="outline-container-sec-2-12-1" class="outline-4">
+<h4 id="sec-2-12-1"><span class="section-number-4">2.12.1</span> Referencing</h4>
+<div class="outline-text-4" id="text-2-12-1">
 <p>
 Enable reftex in latex- and LaTeX-modes.
 </p>
@@ -461,12 +482,12 @@ Enable reftex in latex- and LaTeX-modes.
 </div>
 </div>
 
-<div id="outline-container-sec-2-7" class="outline-3">
-<h3 id="sec-2-7"><span class="section-number-3">2.7</span> Markdown</h3>
-<div class="outline-text-3" id="text-2-7">
-</div><div id="outline-container-sec-2-7-1" class="outline-4">
-<h4 id="sec-2-7-1"><span class="section-number-4">2.7.1</span> Settings</h4>
-<div class="outline-text-4" id="text-2-7-1">
+<div id="outline-container-sec-2-13" class="outline-3">
+<h3 id="sec-2-13"><span class="section-number-3">2.13</span> Markdown</h3>
+<div class="outline-text-3" id="text-2-13">
+</div><div id="outline-container-sec-2-13-1" class="outline-4">
+<h4 id="sec-2-13-1"><span class="section-number-4">2.13.1</span> Settings</h4>
+<div class="outline-text-4" id="text-2-13-1">
 <p>
 Automatically load markdown-mode for .md files
 </p>
@@ -481,9 +502,9 @@ Automatically load markdown-mode for .md files
 </div>
 </div>
 
-<div id="outline-container-sec-2-7-2" class="outline-4">
-<h4 id="sec-2-7-2"><span class="section-number-4">2.7.2</span> Pandoc</h4>
-<div class="outline-text-4" id="text-2-7-2">
+<div id="outline-container-sec-2-13-2" class="outline-4">
+<h4 id="sec-2-13-2"><span class="section-number-4">2.13.2</span> Pandoc</h4>
+<div class="outline-text-4" id="text-2-13-2">
 <p>
 Loads <code>pandoc-mode</code> when in <code>markdown-mode</code> automatically, and use <code>pandoc</code> as default compiler in <code>markdown-mode</code>.
 </p>
@@ -498,12 +519,12 @@ Loads <code>pandoc-mode</code> when in <code>markdown-mode</code> automatically,
 </div>
 </div>
 
-<div id="outline-container-sec-2-8" class="outline-3">
-<h3 id="sec-2-8"><span class="section-number-3">2.8</span> Utilities</h3>
-<div class="outline-text-3" id="text-2-8">
-</div><div id="outline-container-sec-2-8-1" class="outline-4">
-<h4 id="sec-2-8-1"><span class="section-number-4">2.8.1</span> Smex</h4>
-<div class="outline-text-4" id="text-2-8-1">
+<div id="outline-container-sec-2-14" class="outline-3">
+<h3 id="sec-2-14"><span class="section-number-3">2.14</span> Utilities</h3>
+<div class="outline-text-3" id="text-2-14">
+</div><div id="outline-container-sec-2-14-1" class="outline-4">
+<h4 id="sec-2-14-1"><span class="section-number-4">2.14.1</span> Smex</h4>
+<div class="outline-text-4" id="text-2-14-1">
 <p>
 Enables history and searching on top of <code>M-x</code> using <code>smex</code>.
 </p>
@@ -537,7 +558,7 @@ Determines where <code>deft</code> notes get saved.
 
 <div class="org-src-container">
 
-<pre class="src src-emacs-lisp">(setq deft-directory "C:/Users/patri/Dropbox/deft")
+<pre class="src src-emacs-lisp">(setq deft-directory "~/Dropbox/deft")
 </pre>
 </div>
 </div>
@@ -562,7 +583,7 @@ Since I installed <code>pandoc</code> via <code>cabal</code>, I need to explicit
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Patrick Elliott</p>
-<p class="date">Created: 2015-09-26 Sat 16:26</p>
+<p class="date">Created: 2015-09-26 Sat 18:24</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.5.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>

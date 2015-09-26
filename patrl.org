@@ -2,7 +2,13 @@
 
 * Resources
 
-Much of this was lifted from [[http://aaronbedra.com/emacs.d/][Aaron Bedra's Emacs 24 Configuration]].
+I lifted much of this from the following sources:
+
+- [[http://aaronbedra.com/emacs.d/][Aaron Bedra's Emacs 24 Configuration]]
+- [[http://www.swaroopch.com/2013/10/17/emacs-configuration-tutorial/][Getting started with my own .emacs.d]]
+- [[https://github.com/eschulte/emacs24-starter-kit/][The Literate Programming fork of the original emacs starter kit]]
+
+...and probably other places too.
 
 * Configuration (general)
 
@@ -17,26 +23,29 @@ This ensures that emacs knows my full name and email address.
 
 ** Package management
 
+*** Cask
+
+I use [[https://github.com/cask/cask][cask]] to manage my emacs packages. 
+
 #+begin_src emacs-lisp
-;; Package Manager
-;; See ~Cask~ file for its configuration
-;; https://github.com/cask/cask
 (require 'cask "~/.cask/cask.el")
 (cask-initialize)
+#+end_src
 
-;; Keeps ~Cask~ file in sync with the packages
-;; that you install/uninstall via ~M-x list-packages~
-;; https://github.com/rdallasgray/pallet
+*** Pallet
+
+[[https://github.com/rdallasgray/pallet][Pallet]] works in tandem with ~cask~: it ensures that my ~Cask~ file is kept in sync with the packages I install/uninstall via ~M-x list-packages~.
+
+#+begin_src emacs-lisp
 (require 'pallet)
 (pallet-mode t)
 #+end_src
 
-** Splash screen
+** Start-up
 
 This gets rid of the initial splash screen, as well as the message in the scratch buffer. Since I spend most of my time using emacs to take notes in ~deft-mode~, I set this as the initial major mode.
 
 #+begin_src emacs-lisp
-;; Gets rid of the splash screen and sets deft as the initial major mode.
 (setq inhibit-splash-screen t initial-scratch-message nil
       initial-major-mode 'deft)
 #+end_src
@@ -59,12 +68,11 @@ Allow single character responses to yes/no questions.
 
 ** Keybindings
 
-Miscellaneous keybindings.
+Miscellaneous keybindings that don't belong anywhere else.
 
 #+begin_src emacs-lisp
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
-(global-set-key (kbd "<f9>") 'deft)
 (global-set-key [C-mouse-4] 'text-scale-increase)
 (global-set-key [C-mouse-5] 'text-scale-decrease)
 #+end_src
@@ -81,7 +89,7 @@ Gets rid of the tool bar.
 
 *** Theme
 
-Use the ~solarized-light~ theme.
+Since I spend an awful lot of time writing in emacs, I need it to be easy on the eyes. I Use the ~solarized-light~ theme.
 
 #+begin_src emacs-lisp
 (load-theme 'solarized-light t)
@@ -89,7 +97,7 @@ Use the ~solarized-light~ theme.
 
 *** Font
 
-Use the fantasque font
+[[https://github.com/belluzj/fantasque-sans][Fantasque Sans Mono]] is a fantastic monospace font for coding. Emacs will default to the system default if fantasque isn't installed. If you don't like fantasque sans (it's rather idiosyncratic), I can also recommend [[https://github.com/mozilla/Fira][Fira Sans Mono]] as an alternative.
 
 #+begin_src emacs-lisp
 (set-frame-font "Fantasque Sans Mono"-14)
@@ -97,26 +105,13 @@ Use the fantasque font
 
 **** TODO terminal theming
 
-
-** Org
-
-*** Settings
-
-Put a timestamp on completed tasks. Highlight the ~INPROGRESS~ keyword.
-
-#+begin_src emacs-lisp
-(setq org-log-done t
-      org-todo-keywords '((sequence "TODO" "INPROGRESS" "DONE"))
-      org-todo-keyword-faces '(("INPROGRESS" . (:foreground "blue" :weight bold))))
-#+end_src
-
 ** Writing
 
-I've added some utilities for writing prose in emacs.
+Some utilities to improve emacs as a tool for writing in prose and various markup languages.
 
-*** Flyspell
+*** Spell-checking
 
-Enable flyspell spellchecking in text-mode (and derived modes).
+Enables flyspell spellchecking in text-mode (and derived modes).
 
 #+begin_src emacs-lisp
 (add-hook 'text-mode-hook 'flyspell-mode)
@@ -130,9 +125,25 @@ Enable olivetti in text-mode (and derived modes) to provide margins.
 (add-hook 'text-mode-hook 'olivetti-mode)
 #+end_src
 
+*** TODO Adjust ~olivetti~ margins
 *** TODO ~writeroom-mode~
 
-Check out writeroom mode as an alternative to ~olivetti-mode~.
+Check out writeroom mode as an alternative to ~olivetti~.
+
+** Org
+
+This puts a timestamp on completed tasks.
+
+#+begin_src emacs-lisp
+(setq org-log-done t)
+#+end_src
+
+This sets up my org keywords, and highlights the ~INPROGRESS~.
+
+#+begin_src emacs-lisp
+(setq org-todo-keywords '((sequence "TODO" "INPROGRESS" "DONE"))
+      org-todo-keyword-faces '(("INPROGRESS" . (:foreground "blue" :weight bold))))
+#+end_src
 
 ** Deft
 
@@ -147,6 +158,12 @@ This sets org-mode as the default mode for deft.
 (setq deft-use-filter-string-for-filename "deft")
 #+end_src
 
+This sets ~f9~ as the deft keyboard shortcut.
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "<f9>") 'deft)
+#+end_src
+
 ** LaTeX
 
 *** Referencing
@@ -158,6 +175,7 @@ Enable reftex in latex- and LaTeX-modes.
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (add-hook 'latex-mode-hook 'turn-on-reftex)
 #+end_src
+
 
 ** Markdown
 
@@ -194,11 +212,10 @@ Enables history and searching on top of ~M-x~ using ~smex~.
 #+end_src
 
 
-* Configuration (system specific)
-
-** Directories
-
-*** Deft
+* System-specific configuration
+   
+*** Directories
+    
 
 Determines where ~deft~ notes get saved.
 
