@@ -77,6 +77,14 @@ Miscellaneous keybindings that don't belong anywhere else.
 (global-set-key [C-mouse-5] 'text-scale-decrease)
 #+end_src
 
+** Parentheses
+
+#+begin_src emacs-lisp
+(show-paren-mode 1)
+(setq show-paren-delay 0)
+#+end_src
+
+
 ** Tool bar
 
 Gets rid of the tool bar.
@@ -86,6 +94,15 @@ Gets rid of the tool bar.
 #+end_src
 
 ** Display settings
+
+*** Olivetti
+
+Enable olivetti in text-mode (and derived modes) to provide margins.
+
+#+begin_src emacs-lisp
+(add-hook 'text-mode-hook 'olivetti-mode)
+(setq olivetti-body-width 110)
+#+end_src
 
 *** Theme
 
@@ -104,7 +121,7 @@ Since I spend an awful lot of time writing in emacs, I need it to be easy on the
 #+end_src
 
 **** TODO terminal theming
-
+     
 ** Writing
 
 Some utilities to improve emacs as a tool for writing in prose and various markup languages.
@@ -117,15 +134,9 @@ Enables flyspell spellchecking in text-mode (and derived modes).
 (add-hook 'text-mode-hook 'flyspell-mode)
 #+end_src
 
-*** Olivetti
 
-Enable olivetti in text-mode (and derived modes) to provide margins.
 
-#+begin_src emacs-lisp
-(add-hook 'text-mode-hook 'olivetti-mode)
-#+end_src
-
-*** TODO Adjust ~olivetti~ margins
+*** INPROGRESS Adjust ~olivetti~ margins
 *** TODO ~writeroom-mode~
 
 Check out writeroom mode as an alternative to ~olivetti~.
@@ -166,6 +177,25 @@ This sets ~f9~ as the deft keyboard shortcut.
 
 ** LaTeX
 
+*** Set-up
+
+Enable parse on load and save.
+
+#+begin_src emacs-lisp
+(setq TeX-parse-self t)
+(setq TeX-auto-save t)
+(setq TeX-save-query nil)
+#+end_src
+
+*** ~Latexmk~
+
+Sets up ~auctex~ to allow ~latexmk~ as a compilation command.
+
+#+begin_src emacs-lisp
+  (require 'auctex-latexmk)
+    (auctex-latexmk-setup)
+#+end_src
+
 *** Referencing
 
 Enable reftex in latex- and LaTeX-modes.
@@ -176,6 +206,9 @@ Enable reftex in latex- and LaTeX-modes.
 (add-hook 'latex-mode-hook 'turn-on-reftex)
 #+end_src
 
+*** TODO line numbering
+
+~linum-mode~ currently has a bug that wipes out margin settings, rendering it incompatible with ~olivetti~. Need to figure out a way of maintaining nice margins while also having line numbering.
 
 ** Markdown
 

@@ -4,6 +4,7 @@
 (source org)
 
 (depends-on "auctex")
+(depends-on "auctex-latexmk")
 (depends-on "cask")
 (depends-on "dash")
 (depends-on "deft")
