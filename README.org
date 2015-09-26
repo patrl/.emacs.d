@@ -1,0 +1,15 @@
+#+title: My personal emacs configuration
+
+* About
+
+A literate emacs configuration using ~org-mode~ with ~babel~.
+
+Package management courtesy of the wonderful combination of [[https://github.com/cask/cask][cask]] and [[https://github.com/rdallasgray/pallet][pallet]].
+
+* Installation
+
+** Linux
+
+If you're on linux and want my configuration, just clone the contents of this repository into ~\~/.emacs.d~, and run ~install.sh~ (do this at your own risk).
+
+** TODO Add windows installation instructions
