@@ -1,0 +1,205 @@
+#+TITLE: Patrick Elliott's Emacs 24 Configuration
+
+* Resources
+
+Much of this was lifted from [[http://aaronbedra.com/emacs.d/][Aaron Bedra's Emacs 24 Configuration]].
+
+* Configuration (general)
+
+** User details
+
+This ensures that emacs knows my full name and email address.
+
+#+begin_src emacs-lisp
+(setq user-full-name "Patrick Elliott")
+(setq user-mail-address "patrick.d.elliott@gmail.com")
+#+end_src
+
+** Package management
+
+#+begin_src emacs-lisp
+;; Package Manager
+;; See ~Cask~ file for its configuration
+;; https://github.com/cask/cask
+(require 'cask "~/.cask/cask.el")
+(cask-initialize)
+
+;; Keeps ~Cask~ file in sync with the packages
+;; that you install/uninstall via ~M-x list-packages~
+;; https://github.com/rdallasgray/pallet
+(require 'pallet)
+(pallet-mode t)
+#+end_src
+
+*** Splash screen
+
+This gets rid of the initial splash screen, as well as the message in the scratch buffer. Since I spend most of my time using emacs to take notes in ~deft-mode~, I set this as the initial major mode.
+
+#+begin_src emacs-lisp
+;; Gets rid of the splash screen and sets deft as the initial major mode.
+(setq inhibit-splash-screen t initial-scratch-message nil
+      initial-major-mode 'deft)
+#+end_src
+
+*** Backup files
+
+Stops emacs from creating backup files which have a habit of cluttering up directories.
+
+#+begin_src emacs-lisp
+(setq make-backup-files nil)
+#+end_src
+
+*** Yes-and-no
+
+Allow single character responses to yes/no questions.
+
+#+begin_src emacs-lisp
+(defalias 'yes-or-no-p 'y-or-n-p)
+#+end_src
+
+*** Keybindings
+
+Miscellaneous keybindings.
+
+#+begin_src emacs-lisp
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
+(global-set-key (kbd "<f9>") 'deft)
+(global-set-key [C-mouse-4] 'text-scale-increase)
+(global-set-key [C-mouse-5] 'text-scale-decrease)
+#+end_src
+
+*** Tool bar
+
+Gets rid of the tool bar.
+
+#+begin_src emacs-lisp
+(tool-bar-mode -1)
+#+end_src
+
+*** Display settings
+
+Use the ~solarized-light~ theme.
+
+#+begin_src emacs-lisp
+(load-theme 'solarized-light t)
+#+end_src
+
+**** TODO terminal theming
+
+
+** Org
+
+*** Settings
+
+Put a timestamp on completed tasks. Highlight the ~INPROGRESS~ keyword.
+
+#+begin_src emacs-lisp
+(setq org-log-done t
+      org-todo-keywords '((sequence "TODO" "INPROGRESS" "DONE"))
+      org-todo-keyword-faces '(("INPROGRESS" . (:foreground "blue" :weight bold))))
+#+end_src
+
+** Writing
+
+I've added some utilities for writing prose in emacs.
+
+*** Flyspell
+
+Enable flyspell spellchecking in text-mode (and derived modes).
+
+#+begin_src emacs-lisp
+(add-hook 'text-mode-hook 'flyspell-mode)
+#+end_src
+
+*** Olivetti
+
+Enable olivetti in text-mode (and derived modes) to provide margins.
+
+#+begin_src emacs-lisp
+(add-hook 'text-mode-hook 'olivetti-mode)
+#+end_src
+
+*** TODO ~writeroom-mode~
+
+Check out writeroom mode as an alternative to ~olivetti-mode~.
+
+** Deft
+
+[[http://jblevins.org/projects/deft/][Deft]] is one of the modes I use most frequently. It allows me to quickly create, manage, and sort through notes. Complemented with ~org-mode~, it's the perfect tool for daily note-taking.
+
+This sets org-mode as the default mode for deft.
+
+#+begin_src emacs-lisp
+(setq deft-extension "org")
+(setq deft-text-mode 'org-mode)
+
+(setq deft-use-filter-string-for-filename "deft")
+#+end_src
+
+** LaTeX
+
+*** Referencing
+
+Enable reftex in latex- and LaTeX-modes.
+
+#+begin_src emacs-lisp
+(require 'reftex)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(add-hook 'latex-mode-hook 'turn-on-reftex)
+#+end_src
+
+** Markdown
+
+*** Settings
+
+Automatically load markdown-mode for .md files
+
+#+begin_src emacs-lisp
+(add-to-list 'auto-mode-alist '("\\.md$"
+  . markdown-mode)) (add-to-list 'auto-mode-alist '("\\.mdown$"
+						    . markdown-mode))
+#+end_src
+
+*** Pandoc
+
+Loads ~pandoc-mode~ when in ~markdown-mode~ automatically, and use ~pandoc~ as default compiler in ~markdown-mode~.
+
+#+begin_src emacs-lisp
+(add-hook 'markdown-mode-hook 'pandoc-mode)
+(setq markdown-command "pandoc --smart - markdown -t html")
+#+end_src
+
+** Utilities
+
+*** Smex
+
+Enables history and searching on top of ~M-x~ using ~smex~.
+
+#+begin_src emacs-lisp
+(setq smex-save-file (expand-file-name ".smex-items" user-emacs-directory))
+(smex-initialize)
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+#+end_src
+
+
+* Configuration (system specific)
+
+** Directories
+
+*** Deft
+
+Determines where ~deft~ notes get saved.
+
+#+begin_src emacs-lisp
+(setq deft-directory "~/Dropbox/deft")
+#+end_src
+
+*** Pandoc
+
+Since I installed ~pandoc~ via ~cabal~, I need to explicit declare where to find the haskell script.
+
+#+begin_src emacs-lisp
+(setq pandoc-binary "~/.cabal/bin/pandoc")
+#+end_src
