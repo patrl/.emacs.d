@@ -12,3 +12,9 @@
 
 # Cask folder
 /.cask/
+
+# session files
+session.*
+
+# html files
+*.html

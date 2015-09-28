@@ -4,9 +4,11 @@
 (source org)
 
 (depends-on "auctex")
+(depends-on "auctex-latexmk")
 (depends-on "cask")
 (depends-on "dash")
 (depends-on "deft")
+(depends-on "haskell-mode")
 (depends-on "hydra")
 (depends-on "markdown-mode")
 (depends-on "olivetti")
