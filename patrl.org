@@ -25,17 +25,10 @@ This ensures that emacs knows my full name and email address.
 
 *** Cask
 
-I use [[https://github.com/cask/cask][cask]] to manage my emacs packages. 
+I use [[https://github.com/cask/cask][cask]] to manage my emacs packages.
 
 #+begin_src emacs-lisp
-<<<<<<< HEAD
-;; Package Manager
-;; See ~Cask~ file for its configuration
-;; https://github.com/cask/cask
 (require 'cask "C:/Users/patri/.cask/cask.el")
-=======
-(require 'cask "~/.cask/cask.el")
->>>>>>> master
 (cask-initialize)
 #+end_src
 
@@ -128,7 +121,7 @@ Since I spend an awful lot of time writing in emacs, I need it to be easy on the
 #+end_src
 
 **** TODO terminal theming
-     
+
 ** Writing
 
 Some utilities to improve emacs as a tool for writing in prose and various markup languages.
@@ -266,9 +259,9 @@ Enables history and searching on top of ~M-x~ using ~smex~.
 
 
 * System-specific configuration
-   
+
 *** Directories
-    
+
 
 Determines where ~deft~ notes get saved.
 
