@@ -1,5 +1,7 @@
 #+TITLE: Patrick Elliott's Emacs 24 Configuration
 
+/Please note that I haven't used this for a very long time, and it almost certainly won't work anymore. These days I'm mainly hacking at the excellent [[https://github.com/hlissner/doom-emacs][doom emacs]]./
+
 * Resources
 
 I lifted much of this from the following sources:
